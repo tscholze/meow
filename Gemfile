@@ -12,3 +12,5 @@ end
 gem 'jquery-rails'
 
 gem 'rmagick'
+gem 'execjs'
+gem 'therubyracer'
