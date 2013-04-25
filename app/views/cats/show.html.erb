@@ -1,9 +1,3 @@
-<%= content_tag 'h1', "Cat ##{@cat.id}" %>
-
-<%= content_tag :div, :id => 'navigation' do %>
-  <%= link_to 'Home', '/'  %>
-<% end %>
-
 <%= content_tag :div, :class => 'cat cat_single' do %>
   <%= image_tag '/cats/full/' + @cat.filename %>
 <% end %>

@@ -8,8 +8,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <%= content_tag :h1, 'Meow!' %>
+  <%= content_tag :div, :id => 'navigation' do %>
+    <%= link_to 'Home', '/'  %>
+    <%= link_to 'Get random cat', random_cat_path %>
+  <% end %>
+  <%= yield %>
+  <%= content_tag :div, :id => 'footer' do %>
+    Meow! is powered by Ruby on Rails
+  <% end %>
 </body>
 </html>
