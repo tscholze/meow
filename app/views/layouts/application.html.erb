@@ -8,10 +8,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= content_tag :h1, 'Meow!' %>
+  <%= content_tag :h1, link_to('Meow!', '/') %>
+  <% if flash[:message] %>
+    <%= content_tag :p, flash[:message], :id => 'flash' %>
+  <% end %>
   <%= content_tag :div, :id => 'navigation' do %>
     <%= link_to 'Home', '/'  %>
+    |
     <%= link_to 'Get random cat', random_cat_path %>
+    |
+    <% if session[:user] %>
+      <%= session[:user][:firstname] %> <%= session[:user][:lastname] %>
+      <%= link_to 'Logout', user_logout_path %>
+    <% else %>
+      <%= link_to 'Login', user_login_path %>    
+    <% end %>
   <% end %>
   <%= yield %>
   <%= content_tag :div, :id => 'footer' do %>

@@ -1,0 +1,11 @@
+<%= form_tag request.url do %>
+
+	<%= label_tag 'username' %>
+	<%= text_field :user, :login %>
+
+	<%= label_tag 'password' %>
+	<%= password_field :user, :password %>
+
+	<%= submit_tag 'login' %>
+
+<% end %>
