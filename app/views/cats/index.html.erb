@@ -1,0 +1,19 @@
+<%= content_tag :h1, 'Meow!' %>
+
+<%= content_tag :div, :id => 'navigation' do %>
+  <%= link_to 'Get random cat', random_cat_path %>
+<% end %>
+
+<% @cats.each do |cat| %>
+  <%= content_tag :div, :class => 'cat cat_thumbnail' do %>
+    <%= content_tag :div, :class => 'image' do %>
+      <%= link_to((image_tag '/cats/thumbnails/' + cat.filename), cat) %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= content_tag :div, '', :class => 'clear' %>
+
+<%= content_tag :div, :id => 'footer' do %>
+  Meow! is powered by Ruby on Rails
+<% end %>
