@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
     if session[:user]
       return true
     end
-    flash[:notice] = "Bitte melden Sie sich an."
+    flash[:notice] = 'please login'
     session[:return_to] = request.url
-    redirect_to :controller => "users", :action => "login"
+    redirect_to :controller => :users, :action => :login
     return false 
   end
 
