@@ -20,8 +20,8 @@ class CatsController < ApplicationController
 
   def random
     offset = rand(Cat.count)
-    cat = Cat.first(:offset => offset)
-    redirect_to cat
+    @cat = Cat.first(:offset => offset)
+    render :show
   end
 
 end
