@@ -4,7 +4,7 @@
 <%= content_tag :div, :class => 'cat cat_single' do %>
   <%= image_tag '/cats/full/' + @cat.filename %>
 <% end %>
-<% if session[:user] %>
+<% if session[:user] && session[:user][:can_delete_image] %>
   <%= content_tag :p do %>
     Admin:
     <%= link_to 'X', @cat, :method => :delete, :confirm => 'are you sure?' %>

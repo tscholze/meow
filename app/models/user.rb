@@ -4,6 +4,15 @@ class User < ActiveRecord::Base
   
   attr_accessible :login, :email, :firstname, :lastname, :hashed_password, :salt
   
+  attr_protected :id, :salt
+
+  attr_accessor :password, :password_confirmation
+  
+  validates_confirmation_of :password
+  validates_presence_of :password, :on => :create
+  validates_presence_of :email
+  validates_uniqueness_of :email, :login
+
   def self.random_string(len)
     #generate a random password consisting of strings and digits
     chars = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a

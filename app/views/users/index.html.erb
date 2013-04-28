@@ -1,0 +1,33 @@
+<%= content_tag :p do %>
+  <%= link_to 'Add user', new_user_path %>
+<% end %>
+<table>
+  <tr>
+    <th></th>
+    <th>ID</th>
+    <th>Login</th>
+    <th>E-Mail</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Is Admin?</th>
+    <th>Can upload image?</th>
+    <th>Can delete image?</th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td>
+        <%= link_to 'Edit', edit_user_path(user) %>
+        |
+        <%= link_to 'Delete', user_path(user), :method => :delete, :confirm => 'are you sure?'  %>
+      </td>
+      <td><%= user.id %></td>
+      <td><%= user.login %></td>
+      <td><%= user.email %></td>
+      <td><%= user.firstname %></td>
+      <td><%= user.lastname %></td>
+      <td><%= user.admin ? 'yes' : 'no' %></td>
+      <td><%= user.can_upload_image ? 'yes' : 'no' %></td>
+      <td><%= user.can_delete_image ? 'yes' : 'no' %></td>
+    </tr>
+  <% end %>
+</table>

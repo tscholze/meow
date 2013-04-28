@@ -5,4 +5,5 @@ Cats::Application.routes.draw do
   delete '/cats/:id' => 'cats#destroy'
   match '/users/login', :as => :user_login
   match '/users/logout', :as => :user_logout
+  resources :users
 end

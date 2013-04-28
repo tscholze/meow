@@ -18,6 +18,10 @@
     <%= link_to 'Get random cat', random_cat_path %>
     |
     <% if session[:user] %>
+      <% if session[:user][:admin] %>
+        <%= link_to 'Admin', users_path %>
+        |
+      <% end %>
       <%= session[:user][:firstname] %> <%= session[:user][:lastname] %>
       <%= link_to 'Logout', user_logout_path %>
     <% else %>

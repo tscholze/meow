@@ -1,0 +1,49 @@
+<%= form_for @user do |f| %>
+
+  <% if @user.errors.any? %>
+    <%= content_tag :ul, :class => :errors do %>
+      <% @user.errors.full_messages.each do |msg| %>
+        <%= content_tag :li, msg %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= f.label :login %>
+  <%= f.text_field :login %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.label :firstname %>
+  <%= f.text_field :firstname %>
+
+  <%= f.label :lastname %>
+  <%= f.text_field :lastname %>
+  
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+
+  <%= content_tag :div, :class => :checkbox do %>
+    <%= f.check_box :admin %>
+    <%= f.label :admin %>
+    <%= content_tag :div, '', :class => :clear %>
+  <% end %>
+
+  <%= content_tag :div, :class => :checkbox do %>
+    <%= f.check_box :can_upload_image %>
+    <%= f.label :can_upload_image %>
+    <%= content_tag :div, '', :class => :clear %>
+  <% end %>
+
+  <%= content_tag :div, :class => :checkbox do %>
+    <%= f.check_box :can_delete_image %>
+    <%= f.label :can_delete_image %>
+    <%= content_tag :div, '', :class => :clear %>
+  <% end %>
+
+  <%= f.submit %>
+
+<% end %>
