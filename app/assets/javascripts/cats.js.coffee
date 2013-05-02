@@ -1,3 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$ ->
+  $('.cat_thumbnail img').each (index, element) =>
+    if /\.gif$/.test $(element).attr('src')
+      $(element).hover =>
+        if ($(element).hasClass 'animated') == false
+          $(element).attr('src', $(element).data('full')).css('width', '200px').addClass('animated')
+    return
+  return
