@@ -1,6 +1,6 @@
 class CatsController < ApplicationController
 
-  before_filter :login_required, :except => [:index, :show, :random]
+  before_filter :login_required, :except => [:index, :show, :random, :feed]
 
   def index
     @cats = Cat.all
@@ -26,6 +26,13 @@ class CatsController < ApplicationController
     offset = rand(Cat.count)
     @cat = Cat.first(:offset => offset)
     render :show
+  end
+
+  def feed
+    @cats = Cat.order("id DESC").limit(10).all
+    respond_to do |format|
+      format.xml { render :layout => false  } # feed.xml.builder
+    end
   end
 
 end
