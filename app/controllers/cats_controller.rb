@@ -31,7 +31,12 @@ class CatsController < ApplicationController
   def feed
     @cats = Cat.order("id DESC").limit(10).all
     respond_to do |format|
-      format.xml { render :layout => false  } # feed.xml.builder
+      format.html do
+        redirect_to :format => :xml
+      end
+      format.xml do
+        render :layout => false
+      end
     end
   end
 
