@@ -1,6 +1,7 @@
 namespace :cats do
   
   require "RMagick"
+  require "FileUtils"
 
   def create_preview_images(file)
     img = Magick::Image.read(Rails.root.join('public', 'cats', 'full', file)).first
@@ -30,7 +31,12 @@ namespace :cats do
         # move original image to full folder
         File.rename filepath, Rails.root.join('public', 'cats', 'full', new_filename)
         # create thumbnail
-        create_preview_images(new_filename)
+        begin
+          create_preview_images(new_filename)
+        rescue Exception => e
+          puts "error creating preview image of #{new_filename} (exception: #{e}), copying full version to thumnails folder"
+          FileUtils.cp Rails.root.join('public', 'cats', 'full', new_filename), Rails.root.join('public', 'cats', 'thumbnails', new_filename)
+        end
       end
     end
   end
