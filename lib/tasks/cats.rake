@@ -1,7 +1,7 @@
 namespace :cats do
   
   require "RMagick"
-  require "FileUtils"
+  require "fileutils"
 
   def create_preview_images(file)
     img = Magick::Image.read(Rails.root.join('public', 'cats', 'full', file)).first
