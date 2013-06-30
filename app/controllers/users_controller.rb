@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new
-    @user.update_attributes(params[:user])
+    @user.update_attributes(user_params)
     if @user.save
       flash[:message] = 'user has been created'
       redirect_to :action => :index
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update_attributes(params[:user])
+    @user.update_attributes(user_params)
     if @user.save
       flash[:message] = 'user has been updated'
       redirect_to :action => :index
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
 
   def login
     if request.post?
-      if session[:user] = User.authenticate(params[:user][:login], params[:user][:password])
+      if session[:user] = User.authenticate(user_params[:login], user_params[:password])
         redirect_to_stored
         flash[:message] = 'login ok'
       else
@@ -63,6 +63,12 @@ class UsersController < ApplicationController
     session[:user] = nil
     flash[:message] = 'logout ok'
     redirect_to :action => 'login'
+  end
+  
+  private
+  
+  def user_params
+    params.require(:user).permit(:login, :email, :firstname, :lastname, :password, :password_confirmation, :admin, :can_upload_image, :can_delete_image)
   end
 
 end

@@ -18,7 +18,7 @@
       <td>
         <%= link_to 'Edit', edit_user_path(user) %>
         |
-        <%= link_to 'Delete', user_path(user), :method => :delete, :confirm => 'are you sure?'  %>
+        <%= link_to 'Delete', user_path(user), :method => :delete, :data => { :confirm => 'are you sure?' } %>
       </td>
       <td><%= user.id %></td>
       <td><%= user.login %></td>

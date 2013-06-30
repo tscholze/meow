@@ -24,12 +24,12 @@ class CatsController < ApplicationController
 
   def random
     offset = rand(Cat.count)
-    @cat = Cat.first(:offset => offset)
+    @cat = Cat.offset(offset).first
     render :show
   end
 
   def feed
-    @cats = Cat.order("id DESC").limit(10).all
+    @cats = Cat.order("id DESC").limit(10).load
     respond_to do |format|
       format.html do
         redirect_to :format => :xml

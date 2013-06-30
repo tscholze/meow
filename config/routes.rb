@@ -4,7 +4,7 @@ Cats::Application.routes.draw do
   get '/cats/:id' => 'cats#show', :as => :cat
   get '/feed' => 'cats#feed', :as => :feed
   delete '/cats/:id' => 'cats#destroy'
-  match '/users/login', :as => :user_login
-  match '/users/logout', :as => :user_logout
+  match '/users/login', :as => :user_login, :via => [:get, :post]
+  match '/users/logout', :as => :user_logout, :via => [:get, :post]
   resources :users
 end

@@ -7,6 +7,6 @@
 <% if session[:user] && session[:user][:can_delete_image] %>
   <%= content_tag :p do %>
     Admin:
-    <%= link_to 'X', @cat, :method => :delete, :confirm => 'are you sure?' %>
+    <%= link_to 'X', @cat, :method => :delete, :data => { :confirm => 'are you sure?' } %>
   <% end %>
 <% end %>
