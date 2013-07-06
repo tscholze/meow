@@ -10,9 +10,10 @@ gem "uglifier", "~> 2.1.1"
 gem 'jquery-rails'
 
 # migration to rails4
-#gem 'protected_attributes'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 gem 'rmagick', :require => false
 gem 'execjs'
 gem 'therubyracer'
+
+gem 'piwik_analytics', '~> 1.0.2'
