@@ -29,7 +29,7 @@ namespace :cats do
         cat = Cat.create(:extname => extname)
         new_filename = cat.id.to_s + cat.extname
         # move original image to full folder
-        File.rename filepath, Rails.root.join('public', 'cats', 'full', new_filename)
+        FileUtils.mv filepath, Rails.root.join('public', 'cats', 'full', new_filename)
         # create thumbnail
         begin
           create_preview_images(new_filename)
