@@ -13,8 +13,6 @@ class CatsController < ApplicationController
   def destroy
     if session[:user] && session[:user][:can_delete_image]
       cat = Cat.find(params[:id])
-      File.delete Rails.root.join('public', 'cats', 'full', cat.id.to_s + cat.extname)
-      File.delete Rails.root.join('public', 'cats', 'thumbnails', cat.id.to_s + cat.extname)
       cat.destroy
       redirect_to :action => :index
     else
