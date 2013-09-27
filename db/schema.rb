@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130630205615) do
+ActiveRecord::Schema.define(version: 20130927124940) do
 
   create_table "cats", force: true do |t|
     t.string   "extname"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "checksum"
   end
 
   create_table "sessions", force: true do |t|
@@ -36,8 +37,8 @@ ActiveRecord::Schema.define(version: 20130630205615) do
     t.string   "lastname"
     t.string   "hashed_password"
     t.string   "salt"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "admin",            default: true
     t.boolean  "can_upload_image", default: true
     t.boolean  "can_delete_image", default: true

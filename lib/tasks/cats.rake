@@ -41,4 +41,17 @@ namespace :cats do
     end
   end
   
+  desc "Calculate the checksum for existing images"
+  task :generate_checksum => :environment do
+    puts 'calculating checksum for existing cats'
+    cats = Cat.where(:checksum => nil)
+    cats.each do |cat|
+      filename_full = Rails.root.join('public', cat.filename_full[1..-1])
+      # puts filename_full
+      checksum = Digest::MD5.file(filename_full)
+      puts "#{ cat.filename } => #{ checksum.to_s }"
+      cat.update_attributes!({ :checksum => checksum.to_s })
+    end
+  end
+  
 end
