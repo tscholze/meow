@@ -32,10 +32,10 @@ namespace :cats do
         if /\.(gif|png|jpe?g)$/.match(content['path'])
           file_content = client.get_file(content['path'])
           File.open(Rails.root.join('public', 'cats', 'import', Pathname.new(content['path']).basename), 'wb') { |file| file.write(file_content) }
+          client.file_delete(content['path'])
         end
       end
     end
-    Rake::Task["cats:import"].invoke
   end
   
   desc "Import images from filesystem"
