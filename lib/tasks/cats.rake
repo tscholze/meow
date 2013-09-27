@@ -26,16 +26,24 @@ namespace :cats do
         filepath = Rails.root.join('public', 'cats', 'import', f)
         filename = File.basename(f)
         extname  = File.extname(f)
-        cat = Cat.create(:extname => extname)
-        new_filename = cat.id.to_s + cat.extname
-        # move original image to full folder
-        FileUtils.mv filepath, Rails.root.join('public', 'cats', 'full', new_filename)
-        # create thumbnail
-        begin
-          create_preview_images(new_filename)
-        rescue Exception => e
-          puts "error creating preview image of #{new_filename} (exception: #{e}), copying full version to thumnails folder"
-          FileUtils.cp Rails.root.join('public', 'cats', 'full', new_filename), Rails.root.join('public', 'cats', 'thumbnails', new_filename)
+        checksum = Digest::MD5.file(filepath).to_s
+        # check if image with same checksum already exist
+        check = Cat.where(:checksum => checksum)
+        if check.length == 0
+          cat = Cat.create({ :extname => extname, :checksum => checksum })
+          new_filename = cat.id.to_s + cat.extname
+          # move original image to full folder
+          FileUtils.mv filepath, Rails.root.join('public', 'cats', 'full', new_filename)
+          # create thumbnail
+          begin
+            create_preview_images(new_filename)
+          rescue Exception => e
+            puts "error creating preview image of #{new_filename} (exception: #{e}), copying full version to thumnails folder"
+            FileUtils.cp Rails.root.join('public', 'cats', 'full', new_filename), Rails.root.join('public', 'cats', 'thumbnails', new_filename)
+          end
+        else
+          puts "there's already a image with the checksum #{ checksum }, ignoring #{ filename } "
+          File.delete filepath
         end
       end
     end
