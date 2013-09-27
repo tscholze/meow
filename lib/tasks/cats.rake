@@ -54,4 +54,14 @@ namespace :cats do
     end
   end
   
+  desc "Find duplicates by using md5 checksum"
+  task :find_duplicates => :environment do
+    cats = Cat.group("checksum").having("count(checksum) > 1")
+    cats.each do |cat|
+      duplicates = Cat.where(:checksum => cat.checksum).where.not(:id => cat.id)
+      puts "found #{ duplicates.length } duplicates for cat with id #{ cat.id }"
+      duplicates.destroy_all
+    end
+  end
+  
 end
