@@ -5,7 +5,7 @@ class DropboxController < ApplicationController
   before_filter :init_dropbox_flow, :only => [:associate, :callback]
   
   def init_dropbox_flow
-    @flow = DropboxOAuth2Flow.new(APP_KEY, APP_SEC, "#{ request.protocol }#{ request.host_with_port }" + dropbox_callback_path, session, :dropbox_auth_csrf_token)
+    @flow = DropboxOAuth2Flow.new(APP_KEY, APP_SEC, "https://#{ request.host_with_port }" + dropbox_callback_path, session, :dropbox_auth_csrf_token)
   end
   
   def associate
