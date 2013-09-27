@@ -24,6 +24,10 @@
         <%= link_to 'Admin', users_path %>
         |
       <% end %>
+      <% if ! session[:user][:dropbox_user_id] %>
+        <%= link_to 'Associate with Dropbox', dropbox_associate_path %>
+        |
+      <% end %>
       <%= session[:user][:firstname] %> <%= session[:user][:lastname] %>
       <%= link_to 'Logout', user_logout_path %>
     <% else %>

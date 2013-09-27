@@ -7,4 +7,8 @@ Cats::Application.routes.draw do
   match '/users/login', :as => :user_login, :via => [:get, :post]
   match '/users/logout', :as => :user_logout, :via => [:get, :post]
   resources :users
+  
+  # dropbox oauth
+  get '/dropbox/associate', :as => :dropbox_associate
+  get '/dropbox/callback', :as => :dropbox_callback
 end

@@ -17,3 +17,6 @@ gem 'execjs'
 gem 'therubyracer'
 
 gem 'piwik_analytics', '~> 1.0.2'
+
+# Dropbox SDK
+gem 'dropbox-sdk'

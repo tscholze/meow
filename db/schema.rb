@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130927124940) do
+ActiveRecord::Schema.define(version: 20130927150107) do
 
   create_table "cats", force: true do |t|
     t.string   "extname"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "checksum"
   end
 
@@ -37,11 +37,13 @@ ActiveRecord::Schema.define(version: 20130927124940) do
     t.string   "lastname"
     t.string   "hashed_password"
     t.string   "salt"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "admin",            default: true
-    t.boolean  "can_upload_image", default: true
-    t.boolean  "can_delete_image", default: true
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.boolean  "admin",                default: true
+    t.boolean  "can_upload_image",     default: true
+    t.boolean  "can_delete_image",     default: true
+    t.string   "dropbox_user_id"
+    t.string   "dropbox_access_token"
   end
 
 end
