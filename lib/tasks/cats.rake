@@ -2,6 +2,7 @@ namespace :cats do
   
   require "RMagick"
   require "fileutils"
+  require "pathname"
 
   def create_preview_images(file)
     img = Magick::Image.read(Rails.root.join('public', 'cats', 'full', file)).first
@@ -16,6 +17,25 @@ namespace :cats do
     new_y = max_x / ratio
     img_new = img.resize(new_x, new_y)
     img_new.write(filename)
+  end
+  
+  desc "Download images from all linked dropbox accounts"
+  task :download_dropbox => :environment do
+    puts 'download images from dropbox'
+    users = User.where.not(:dropbox_user_id => nil)
+    users.each do |u|
+      puts "using dropbox account of user #{ u.login }"
+      client = DropboxClient.new(u.dropbox_access_token)
+      # puts client.account_info.to_yaml
+      results = client.metadata('Meow')
+      results['contents'].each do |content|
+        if /\.(gif|png|jpe?g)$/.match(content['path'])
+          file_content = client.get_file(content['path'])
+          File.open(Rails.root.join('public', 'cats', 'import', Pathname.new(content['path']).basename), 'wb') { |file| file.write(file_content) }
+        end
+      end
+    end
+    Rake::Task["cats:import"].invoke
   end
   
   desc "Import images from filesystem"
