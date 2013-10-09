@@ -4,12 +4,12 @@
   <title>Meow!</title>
   <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
   <meta name="robots" content="noindex" />
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= auto_discovery_link_tag(type = :rss, feed_url(:format => :xml)) %>
 </head>
-<body>
+<body class="desktop">
   <%= content_tag :h1, link_to('Meow!', '/') %>
   <% if flash[:message] %>
     <%= content_tag :p, flash[:message], :id => 'flash' %>
