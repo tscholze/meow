@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  
+  before_filter :redirect_mobile
 
   def login_required
     if session[:user]
@@ -21,6 +23,12 @@ class ApplicationController < ActionController::Base
       redirect_to return_to
     else
       redirect_to :controller => :cats, :action => :index
+    end
+  end
+
+  def redirect_mobile
+    if request.user_agent =~ /Mobile|webOS/ && request.subdomain[/^m(\.\w+)?$/].nil?
+      redirect_to "http://m.#{ request.host + request.original_fullpath }"
     end
   end
 

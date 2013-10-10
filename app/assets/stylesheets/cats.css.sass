@@ -1,43 +1,45 @@
-@mixin transform($params)
-  -webkit-transform: $params
-  -moz-transform: $params
-  
-.cat
-  padding: 20px
-  background-color: #FFFFFF
-  box-shadow: 0 3px 6px rgba(0,0,0,.25)
-  margin: 30px
-  
-.cat_thumbnail
-  width: 200px
-  height: 200px
-  float: left
-  
-.cat_single
-  display: inline-block
-  
-.cat_thumbnail:nth-child(even),
-.cat_single
-  @include transform(rotate(2deg))
-    
-.cat_thumbnail:nth-child(odd)
-  @include transform(rotate(-2deg))
-  
-.cat_thumbnail:nth-child(3n)
-  @include transform(none)
-  position: relative
-  top: -5px
+.desktop
 
-.cat_thumbnail:hover
-  box-shadow: 0 3px 6px rgba(0,0,0,.5)
-  @include transform(scale(1.25))
-  position: relative
-  z-index: 5
-
-.cat
-  .image
+  @mixin transform($params)
+    -webkit-transform: $params
+    -moz-transform: $params
+  
+  .cat
+    padding: 20px
+    background-color: #FFFFFF
+    box-shadow: 0 3px 6px rgba(0,0,0,.25)
+    margin: 30px
+  
+  .cat_thumbnail
+    width: 200px
     height: 200px
-    overflow: hidden
-    img
-      display: block
-      margin: 0px auto
+    float: left
+  
+  .cat_single
+    display: inline-block
+  
+  .cat_thumbnail:nth-child(even),
+  .cat_single
+    @include transform(rotate(2deg))
+    
+  .cat_thumbnail:nth-child(odd)
+    @include transform(rotate(-2deg))
+  
+  .cat_thumbnail:nth-child(3n)
+    @include transform(none)
+    position: relative
+    top: -5px
+
+  .cat_thumbnail:hover
+    box-shadow: 0 3px 6px rgba(0,0,0,.5)
+    @include transform(scale(1.25))
+    position: relative
+    z-index: 5
+
+  .cat
+    .image
+      height: 200px
+      overflow: hidden
+      img
+        display: block
+        margin: 0px auto

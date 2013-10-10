@@ -1,0 +1,17 @@
+<% @cats.each do |cat| %>
+	<p>
+		<div class="row">
+			<div class="small-6 medium-10 large-10 columns">
+				<%= link_to cat_path(cat), :class => 'th' do %>
+				    <%= image_tag cat.filename_thumb , :data => { :full => cat.filename_full} %>
+				<% end %>
+			</div>
+			<div class="small-6 medium-2 large-2 columns">
+				<%= link_to cat_path(cat), :class => 'button round secondary' do %>
+					&rarr;
+				<% end %>
+			</div>
+		</div>
+	</p>
+	<hr />
+<% end %>
