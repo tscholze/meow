@@ -1,5 +1,8 @@
 Meow!
 =====
+
+[![Dependency Status](https://gemnasium.com/klausmeyer/meow.png)](https://gemnasium.com/klausmeyer/meow)
+
 This rails application is a simple gallery, that I use to collect funny cat-pictures and send them to my friends to annoy them :)
 
 Functions
