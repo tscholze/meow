@@ -1,7 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  
+
+  before_filter :set_locale
   before_filter :redirect_mobile
+
+  def set_locale
+    I18n.locale = 'de'
+  end
 
   def login_required
     if session[:user]

@@ -15,9 +15,9 @@
     <%= content_tag :p, flash[:message], :id => 'flash' %>
   <% end %>
   <%= content_tag :div, :id => 'navigation' do %>
-    <%= link_to 'Home', '/'  %>
+    <%= link_to t('home'), '/'  %>
     |
-    <%= link_to 'Get random cat', random_cat_path %>
+    <%= link_to t('get_random_cat'), random_cat_path %>
     |
     <% if session[:user] %>
       <% if session[:user][:admin] %>
@@ -29,9 +29,9 @@
         |
       <% end %>
       <%= session[:user][:firstname] %> <%= session[:user][:lastname] %>
-      <%= link_to 'Logout', user_logout_path %>
+      <%= link_to t('login'), user_logout_path %>
     <% else %>
-      <%= link_to 'Login', user_login_path %>    
+      <%= link_to t('login'), user_login_path %>
     <% end %>
   <% end %>
   <%= yield %>

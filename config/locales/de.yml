@@ -1,0 +1,9 @@
+de:
+  home: Startseite
+  get_random_cat: Zufälliges Katzenbild
+  login: Anmelden
+  logout: Abmelden
+  will_paginate:
+    previous_label: "&#8592; Zurück"
+    next_label: "Vor &#8594;"
+    page_gap: "&hellip;"
