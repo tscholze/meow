@@ -48,6 +48,7 @@ GEM
       json
     erubis (2.7.0)
     execjs (2.0.2)
+    foundation-will_paginate (0.0.1)
     hike (1.2.3)
     i18n (0.6.5)
     jquery-rails (3.0.4)
@@ -114,6 +115,7 @@ GEM
     uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    will_paginate (3.0.5)
 
 PLATFORMS
   ruby
@@ -123,6 +125,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   dropbox-sdk
   execjs
+  foundation-will_paginate
   jquery-rails
   mysql2
   piwik_analytics (~> 1.0.2)
@@ -131,3 +134,4 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   therubyracer
   uglifier (~> 2.2.0)
+  will_paginate (~> 3.0)

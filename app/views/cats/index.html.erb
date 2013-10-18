@@ -1,3 +1,7 @@
+<%= content_tag :div, :class => 'pagination' do %>
+	<%= will_paginate @cats %>
+<% end %>
+
 <% @cats.each do |cat| %>
   <%= content_tag :div, :class => 'cat cat_thumbnail' do %>
     <%= content_tag :div, :class => 'image' do %>
@@ -9,3 +13,7 @@
 <% end %>
 
 <%= content_tag :div, '', :class => 'clear' %>
+
+<%= content_tag :div, :class => 'pagination' do %>
+	<%= will_paginate @cats %>
+<% end %>

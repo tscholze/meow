@@ -20,3 +20,7 @@ gem 'piwik_analytics', '~> 1.0.2'
 
 # Dropbox SDK
 gem 'dropbox-sdk'
+
+# Pagination
+gem 'will_paginate', '~> 3.0'
+gem 'foundation-will_paginate'

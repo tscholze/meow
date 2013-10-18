@@ -15,3 +15,7 @@
 	</p>
 	<hr />
 <% end %>
+
+<%= content_tag :div, :class => 'pagination' do %>
+	<%= foundation_paginate @cats %>
+<% end %>

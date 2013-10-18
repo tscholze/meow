@@ -3,7 +3,7 @@ class CatsController < ApplicationController
   before_filter :login_required, :except => [:index, :show, :random, :feed]
 
   def index
-    @cats = Cat.all
+    @cats = Cat.all.paginate(:page => params[:page])
   end
   
   def show
